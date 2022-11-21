@@ -29,8 +29,7 @@ public class CategoryService {
                 .name(categoryDTO.getName())
                 .build();
 
-        category = categoryRepository.save(category);
-        return category;
+        return categoryRepository.save(category);
     }
 
     public Category getCategoryById(Long id) {

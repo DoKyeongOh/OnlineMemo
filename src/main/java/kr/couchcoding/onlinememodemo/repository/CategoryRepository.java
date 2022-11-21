@@ -11,9 +11,8 @@ import java.util.Optional;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
     Optional<Category> findByName(String name);
-
     Page<Category> findByNameContains(Pageable pageable, String name);
-
+    Category getCategoriesById(Long category_id);
 }
 
 
