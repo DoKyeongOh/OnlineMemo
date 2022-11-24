@@ -53,9 +53,13 @@ public class MemoService {
     }
 
     public Memo modifyMemo(MemoDTO memoDTO) {
+        if (memoDTO.getName() == null || memoDTO.getName().equals(""))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "제목이 비었습니다.");
+
         Optional<Memo> memoOptional = memoRepository.findById(memoDTO.getId());
         if (!memoOptional.isPresent())
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "메모가 존재하지 않습니다.");
+
         Memo memo = Memo.builder()
                 .id(memoDTO.getId())
                 .name(memoDTO.getName())
